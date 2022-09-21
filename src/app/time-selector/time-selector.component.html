@@ -2,7 +2,7 @@
   <div id="length-label">{{timeSelectorName}} Length</div>
   <div id="selector-container"> 
     <button (click)="put(-1)" id="decrement-button">-</button>
-    <div id="length">{{value}}</div>
+    <div id="length">{{value | timerDisplay}}</div>
     <button (click)="put(+1)" id="increment-button">+</button>
   </div>
 </div>
