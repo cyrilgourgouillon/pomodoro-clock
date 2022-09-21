@@ -8,7 +8,7 @@ import { TimerService } from '../service/timer/timer.service';
   styleUrls: ['./time-selector.component.css']
 })
 export class TimeSelectorComponent implements OnInit {
-  @Input() timeSelectorName!: string;
+  @Input() timeSelectorName!: 'Break' | 'Session';
   @Input() minValue!: number;
   @Input() maxValue!: number;
   value: number;
@@ -16,13 +16,20 @@ export class TimeSelectorComponent implements OnInit {
   constructor(private timerService: TimerService) { }
 
   ngOnInit(): void {
-    this.value = this.maxValue;
+    if (this.timeSelectorName === 'Break') {
+      this.value = this.timerService.getDefaultBreakMinute();
+    } else if (this.timeSelectorName === 'Session') {
+      this.value = this.timerService.getDefaultSessionMinute();
+    }
   }
 
   put(amount: number): void {
     if (this.value + amount <= this.maxValue && this.value + amount > this.minValue) {
       this.value += amount;
-      this.timerService.setMinute(this.value);
+
+      if (this.timeSelectorName === 'Session') {
+        this.timerService.setSessionMinute(this.value);
+      }
     }
   }
 

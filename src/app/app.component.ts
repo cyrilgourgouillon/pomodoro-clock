@@ -16,11 +16,19 @@ export class AppComponent {
   constructor(private timerService: TimerService) { }
 
   ngOnInit() {
-    this.timerService.currentMinute.subscribe((value) => {
+    this.timerService.currentBreakMinute.subscribe((value) => {
       this.timerMinute = value;
     });
 
-    this.timerService.currentSecond.subscribe((value) => {
+    this.timerService.currentBreakSecond.subscribe((value) => {
+      this.timerSecond = value;
+    });
+
+    this.timerService.currentSessionMinute.subscribe((value) => {
+      this.timerMinute = value;
+    });
+
+    this.timerService.currentSessionSecond.subscribe((value) => {
       this.timerSecond = value;
     });
   }

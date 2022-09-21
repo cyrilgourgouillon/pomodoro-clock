@@ -1,22 +1,44 @@
 import { Injectable } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
+import { Timer } from 'src/app/timer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TimerService {
-  private minute = new BehaviorSubject<number>(25);
-  currentMinute = this.minute.asObservable();
-  private second = new BehaviorSubject<number>(4);
-  currentSecond = this.second.asObservable();
+  private sessionMinute = new BehaviorSubject<number>(25);
+  currentSessionMinute = this.sessionMinute.asObservable();
+  private sessionSecond = new BehaviorSubject<number>(0);
+  currentSessionSecond = this.sessionSecond.asObservable();
 
-  setMinute(minute: number) {
-    this.minute.next(minute);
+  private breakMinute = new BehaviorSubject<number>(5);
+  currentBreakMinute = this.breakMinute.asObservable();
+  private breakSecond = new BehaviorSubject<number>(0);
+  currentBreakSecond = this.breakSecond.asObservable();
+
+  getDefaultSessionMinute() {
+    return this.sessionMinute.value;
   }
 
-  setSecond(second: number) {
-    this.second.next(second);
+  getDefaultBreakMinute() {
+    return this.breakMinute.value;
+  }
+
+  setSessionMinute(minute: Timer["minute"]) {
+    this.sessionMinute.next(minute);
+  }
+
+  setSessionSecond(second: Timer["second"]) {
+    this.sessionSecond.next(second);
+  }
+
+  setBreakMinute(minute: Timer["minute"]) {
+    this.breakMinute.next(minute);
+  }
+
+  setBreakSecond(second: Timer["second"]) {
+    this.breakSecond.next(second);
   }
 
   constructor() { }
