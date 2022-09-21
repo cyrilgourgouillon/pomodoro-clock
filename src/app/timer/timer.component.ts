@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { TimerDisplayPipe } from '../pipe/timer-display.pipe';
+
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',

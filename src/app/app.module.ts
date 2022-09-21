@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TimeSelectorComponent } from './time-selector/time-selector.component';
 import { TimerComponent } from './timer/timer.component';
+import { TimerDisplayPipe } from './pipe/timer-display.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TimeSelectorComponent,
-    TimerComponent
+    TimerComponent,
+    TimerDisplayPipe
   ],
   imports: [
     BrowserModule,

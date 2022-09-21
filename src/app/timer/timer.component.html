@@ -1,11 +1,7 @@
 <div id="session-container">
 	<div id="timer-label">Session</div>
 	<div id="time-left">
-		<span *ngIf="minutes <= 9">0{{minutes}}</span>
-		<span *ngIf="minutes > 9">{{minutes}}</span>
-		:
-		<span *ngIf="seconds <= 9">0{{seconds}}</span>
-		<span *ngIf="seconds > 9">{{seconds}}</span>
+		<span>{{minutes | timerDisplay}}</span>:<span>{{seconds | timerDisplay}}</span>
 	</div>
 </div>
 
