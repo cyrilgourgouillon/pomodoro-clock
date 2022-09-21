@@ -10,14 +10,19 @@ import { Timer } from './timer';
 })
 export class AppComponent {
   title = 'pomodoro-clock';
-  timerMinute : Timer["minute"];
-  timerSecond : Timer["second"];
   state : 'start' | 'stop';
 
   constructor(private timerService: TimerService) { }
 
   ngOnInit() {
+    this.timerService.currentState.subscribe((value) => {
+      this.state = value;
+    });
+  }
 
+  switchState(value: any): void {
+    this.state = value;
+    console.log(value);
   }
 
 }

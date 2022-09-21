@@ -1,8 +1,5 @@
 <h1>Pomodoro Clock</h1>
-<h2 id="title">Settings</h2>
 
-<app-time-selector timeSelectorName="Break" [minValue]="0" [maxValue]="20"></app-time-selector>
+<app-settings *ngIf="state === 'stop'"></app-settings>
 
-<app-time-selector timeSelectorName="Session" [minValue]="0" [maxValue]="60"></app-time-selector>
-
-<app-timer></app-timer>
+<app-timer (switchStateEvent)="switchState($event)"></app-timer>

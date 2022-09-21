@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { TimerService } from '../service/timer/timer.service';
 
@@ -8,6 +8,8 @@ import { TimerService } from '../service/timer/timer.service';
   styleUrls: ['./timer.component.css']
 })
 export class TimerComponent implements OnInit {
+
+  @Output() switchStateEvent = new EventEmitter<'start' | 'stop'>();
 
   minutes: number;
   seconds: number = 0;
@@ -46,6 +48,7 @@ export class TimerComponent implements OnInit {
   setState(value: 'start' | 'stop'): void {
     this.state = value;
     this.timerService.setState(value);
+    this.switchStateEvent.emit(value);
   }
 
   setTimerOn(): void {
@@ -106,6 +109,7 @@ export class TimerComponent implements OnInit {
   resetTimer(): void {
     this.setTimerOff();
     this.setState('stop');
+    this.setTimerType('session');
     this.timerService.currentSessionMinute.subscribe((value) => {
       this.minutes = value;
     });

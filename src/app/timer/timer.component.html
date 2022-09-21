@@ -10,8 +10,8 @@
 </div>
 
 <div id="controls-container">
-	<button id="start-btn" *ngIf="state === 'stop'" (click)="changeState('stop')">Start</button>
-	<button id="stop-btn" *ngIf="state === 'start'" (click)="changeState('start')">Stop</button>
+	<button id="start-btn" *ngIf="state === 'stop'" (click)="changeState('start')">Start</button>
+	<button id="stop-btn" *ngIf="state === 'start'" (click)="changeState('stop')">Pause</button>
 	<button id="skip" (click)="skipTimer()">Skip</button>
 	<button id="reset" (click)="resetTimer()">Reset</button>
 </div>
