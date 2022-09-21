@@ -13,6 +13,12 @@ export class TimerComponent implements OnInit {
 
   minutes: number;
   seconds: number = 0;
+
+  private sessionMinute: number;
+  private sessionSecond: number = 0;
+  private breakMinute: number;
+  private breakSecond: number = 0;
+
   state: 'start' | 'stop';
   type: 'session' | 'break';
   interval: any;
@@ -23,16 +29,37 @@ export class TimerComponent implements OnInit {
     this.type = 'session';
 
     this.timerService.currentSessionMinute.subscribe((value) => {
-      this.minutes = value;
+      this.sessionMinute = value;
+      
+      if (this.type === 'session')
+        this.minutes = this.sessionMinute;
     });
 
     this.timerService.currentSessionSecond.subscribe((value) => {
-      this.seconds = value;
+      this.sessionSecond = value;
+
+      if (this.type === 'session')
+        this.seconds = this.sessionSecond;
+    });
+
+    this.timerService.currentBreakMinute.subscribe((value) => {
+      this.breakMinute = value;
+
+      if (this.type === 'break')
+        this.minutes = this.breakMinute;
+    });
+
+    this.timerService.currentBreakSecond.subscribe((value) => {
+      this.breakSecond = value;
+
+      if (this.type === 'break')
+        this.seconds = this.breakSecond;
     });
 
     this.timerService.currentState.subscribe((value) => {
       this.state = value;
     });
+
   }
 
   changeState(value: 'start' | 'stop'): void {
@@ -75,22 +102,14 @@ export class TimerComponent implements OnInit {
   }
 
   setSessionTimer(): void {
-    this.timerService.currentSessionMinute.subscribe((value) => {
-      this.minutes = value;
-    });
-    this.timerService.currentSessionSecond.subscribe((value) => {
-      this.seconds = value;
-    });
+    this.minutes = this.sessionMinute;
+    this.seconds = this.sessionSecond;
     this.setTimerType('session');
   }
 
   setBreakTimer(): void {
-    this.timerService.currentBreakMinute.subscribe((value) => {
-      this.minutes = value;
-    });
-    this.timerService.currentBreakSecond.subscribe((value) => {
-      this.seconds = value;
-    });
+    this.minutes = this.breakMinute;
+    this.seconds = this.breakSecond;
     this.setTimerType('break');
   }
 
@@ -110,12 +129,7 @@ export class TimerComponent implements OnInit {
     this.setTimerOff();
     this.setState('stop');
     this.setTimerType('session');
-    this.timerService.currentSessionMinute.subscribe((value) => {
-      this.minutes = value;
-    });
-    this.timerService.currentSessionSecond.subscribe((value) => {
-      this.seconds = value;
-    });
+    this.setSessionTimer();
   }
 
 }

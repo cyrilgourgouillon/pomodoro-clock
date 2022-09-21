@@ -29,6 +29,10 @@ export class TimeSelectorComponent implements OnInit {
 
       if (this.timeSelectorName === 'Session') {
         this.timerService.setSessionMinute(this.value);
+        this.timerService.setSessionSecond(0);
+      } else if (this.timeSelectorName === 'Break') {
+        this.timerService.setBreakMinute(this.value);
+        this.timerService.setBreakSecond(0);
       }
     }
   }
