@@ -2,12 +2,4 @@
 
 <app-time-selector timeSelectorName="Session" [minValue]="0" [maxValue]="25"></app-time-selector>
 
-<div id="session-container">
-  <div id="timer-label">Session</div>
-  <div id="time-left">mm:ss</div>
-</div>
-
-<div id="controls-container">
-  <button id="start_stop">Start/Stop</button>
-  <button id="reset">Reset</button>
-</div>
+<app-timer [minutes]="timerMinute"></app-timer>

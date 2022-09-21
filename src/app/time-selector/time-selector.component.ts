@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { TimerService } from '../service/timer/timer.service';
+
 @Component({
   selector: 'app-time-selector',
   templateUrl: './time-selector.component.html',
@@ -11,7 +13,7 @@ export class TimeSelectorComponent implements OnInit {
   @Input() maxValue!: number;
   value: number;
 
-  constructor() { }
+  constructor(private timerService: TimerService) { }
 
   ngOnInit(): void {
     this.value = this.maxValue;
@@ -20,6 +22,7 @@ export class TimeSelectorComponent implements OnInit {
   put(amount: number): void {
     if (this.value + amount <= this.maxValue && this.value + amount > this.minValue) {
       this.value += amount;
+      this.timerService.setMinute(this.value);
     }
   }
 
