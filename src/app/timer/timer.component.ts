@@ -94,7 +94,7 @@ export class TimerComponent implements OnInit {
           this.setBreakTimer();
         }
       }
-    }, 1); 
+    }, 1000); 
   }
 
   setTimerOff(): void {
