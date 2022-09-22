@@ -3,6 +3,8 @@ import { SettingsService } from '../service/settings/settings.service';
 
 import { TimerService } from '../service/timer/timer.service';
 
+import { defaultTimerValues } from '../enum/defaultValue';
+
 @Component({
   selector: 'app-time-selector',
   templateUrl: './time-selector.component.html',
@@ -12,6 +14,7 @@ export class TimeSelectorComponent implements OnInit {
   @Input() timeSelectorName!: 'Break' | 'Session';
   @Input() minValue!: number;
   @Input() maxValue!: number;
+
   value: number;
 
   constructor(private timerService: TimerService, private settingsService: SettingsService) { }
@@ -29,17 +32,11 @@ export class TimeSelectorComponent implements OnInit {
       this.value += amount;
 
       if (this.timeSelectorName === 'Session') {
-        this.settingsService.settingsState.sessionMinuteSettings = this.value;
-        this.settingsService.settingsState.sessionSecondSettings = 0;
-
-        this.timerService.timerState.sessionMinute = this.value;
-        this.timerService.timerState.sessionSecond = 0;
+        this.settingsService.setSessionTimerSettingsValues(this.value, defaultTimerValues.DEFAULT_SESSION_SECONDS)
+        this.timerService.setSessionTimerValues(this.value, defaultTimerValues.DEFAULT_SESSION_SECONDS);
       } else if (this.timeSelectorName === 'Break') {
-        this.settingsService.settingsState.breakMinuteSettings = this.value;
-        this.settingsService.settingsState.breakSecondSettings = 0;
-
-        this.timerService.timerState.breakMinute = this.value;
-        this.timerService.timerState.breakSecond = 0;
+        this.settingsService.setSessionTimerSettingsValues(this.value, defaultTimerValues.DEFAULT_BREAK_SECONDS)
+        this.timerService.setBreakTimerValues(this.value, defaultTimerValues.DEFAULT_SESSION_SECONDS)
       }
     }
   }

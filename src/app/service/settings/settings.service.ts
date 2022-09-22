@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SettingsState } from 'src/app/type/SettingsState';
-import { TimerService } from '../timer/timer.service';
+
+import { defaultTimerValues } from 'src/app/enum/defaultValue';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +9,22 @@ import { TimerService } from '../timer/timer.service';
 export class SettingsService {
 
   public settingsState : SettingsState = {
-    breakMinuteSettings : 5,
-    breakSecondSettings : 0,
-    sessionMinuteSettings : 25,
-    sessionSecondSettings : 0,
+    breakMinuteSettings : defaultTimerValues.DEFAULT_BREAK_MINUTES,
+    breakSecondSettings : defaultTimerValues.DEFAULT_BREAK_SECONDS,
+    sessionMinuteSettings : defaultTimerValues.DEFAULT_SESSION_MINUTES,
+    sessionSecondSettings : defaultTimerValues.DEFAULT_SESSION_SECONDS,
   };
 
   constructor() {
+  }
+
+  setBreakTimerSettingsValues(minute: SettingsState["breakMinuteSettings"], second: SettingsState["breakSecondSettings"]): void {
+    this.settingsState.breakMinuteSettings = minute;
+    this.settingsState.breakSecondSettings = second;
+  }
+
+  setSessionTimerSettingsValues(minute: SettingsState["sessionMinuteSettings"], second: SettingsState["sessionSecondSettings"]): void {
+    this.settingsState.sessionMinuteSettings = minute;
+    this.settingsState.sessionSecondSettings = second;
   }
 }

@@ -37,32 +37,47 @@ export class TimerComponent implements OnInit {
   setTimerOn(): void {
     this.interval = setInterval(() => {
       if (this.timerState.type === 'break') {
-        if (this.timerState.breakSecond === 0) {
-          this.timerState.breakSecond = 59;
-          this.timerState.breakMinute--;
-        } else {
-          this.timerState.breakSecond--;
-        }
+        this.decreaseBreakTimer();
 
-        if (this.timerState.breakMinute === 0 && this.timerState.breakSecond === 0) {
+        if (this.isBreakTimerOver()) {
           this.setSessionTimer();
           this.resetBreakTimer();
         }
       } else if (this.timerState.type === 'session') {
-        if (this.timerState.sessionSecond === 0) {
-          this.timerState.sessionSecond = 59;
-          this.timerState.sessionMinute--;
-        } else {
-          this.timerState.sessionSecond--;
-        }
+        this.decreaseSessionTimer();
 
-        if (this.timerState.sessionMinute === 0 && this.timerState.sessionSecond === 0) {
+        if (this.isSessionTimerOver()) {
           this.setBreakTimer();
           this.resetSessionTimer();
         }
       }
-
     }, 1000); 
+  }
+
+  decreaseBreakTimer(): void {
+    if (this.timerState.breakSecond === 0) {
+      this.timerState.breakSecond = 59;
+      this.timerState.breakMinute--;
+    } else {
+      this.timerState.breakSecond--;
+    }
+  }
+
+  decreaseSessionTimer(): void {
+    if (this.timerState.sessionSecond === 0) {
+      this.timerState.sessionSecond = 59;
+      this.timerState.sessionMinute--;
+    } else {
+      this.timerState.sessionSecond--;
+    }
+  }
+
+  isBreakTimerOver(): boolean {
+    return this.timerState.breakMinute === 0 && this.timerState.breakSecond === 0;
+  }
+
+  isSessionTimerOver(): boolean {
+    return this.timerState.sessionMinute === 0 && this.timerState.sessionSecond === 0;
   }
 
   setTimerOff(): void {
@@ -78,13 +93,11 @@ export class TimerComponent implements OnInit {
   }
 
   resetSessionTimer(): void {
-    this.timerState.sessionMinute = this.settingsService.settingsState.sessionMinuteSettings;
-    this.timerState.sessionSecond = this.settingsService.settingsState.sessionSecondSettings;
+    this.timerService.setSessionTimerValues(this.settingsService.settingsState.sessionMinuteSettings, this.settingsService.settingsState.sessionSecondSettings);
   }
 
   resetBreakTimer(): void {
-    this.timerState.breakMinute = this.settingsService.settingsState.breakMinuteSettings;
-    this.timerState.breakSecond = this.settingsService.settingsState.breakSecondSettings;
+    this.timerService.setBreakTimerValues(this.settingsService.settingsState.breakMinuteSettings, this.settingsService.settingsState.breakSecondSettings);
   }
 
   setTimerType(value: Type): void {
