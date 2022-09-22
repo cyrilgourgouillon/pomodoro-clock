@@ -7,7 +7,7 @@ import { Timer } from 'src/app/timer';
   providedIn: 'root'
 })
 export class TimerService {
-  sessionMinute = new BehaviorSubject<number>(5);
+  private sessionMinute = new BehaviorSubject<number>(5);
   currentSessionMinute = this.sessionMinute.asObservable();
   private sessionSecond = new BehaviorSubject<number>(0);
   currentSessionSecond = this.sessionSecond.asObservable();
