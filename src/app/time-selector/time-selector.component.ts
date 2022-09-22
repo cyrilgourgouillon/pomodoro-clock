@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SettingsService } from '../service/settings/settings.service';
 
 import { TimerService } from '../service/timer/timer.service';
 
@@ -13,13 +14,13 @@ export class TimeSelectorComponent implements OnInit {
   @Input() maxValue!: number;
   value: number;
 
-  constructor(private timerService: TimerService) { }
+  constructor(private timerService: TimerService, private settingsService: SettingsService) { }
 
   ngOnInit(): void {
     if (this.timeSelectorName === 'Break') {
-      this.value = this.timerService.getDefaultBreakMinute();
+      this.value = this.timerService.timerState.breakMinute;
     } else if (this.timeSelectorName === 'Session') {
-      this.value = this.timerService.getDefaultSessionMinute();
+      this.value = this.timerService.timerState.sessionMinute;
     }
   }
 
@@ -28,11 +29,17 @@ export class TimeSelectorComponent implements OnInit {
       this.value += amount;
 
       if (this.timeSelectorName === 'Session') {
-        this.timerService.setSessionMinute(this.value);
-        this.timerService.setSessionSecond(0);
+        this.settingsService.settingsState.sessionMinuteSettings = this.value;
+        this.settingsService.settingsState.sessionSecondSettings = 0;
+
+        this.timerService.timerState.sessionMinute = this.value;
+        this.timerService.timerState.sessionSecond = 0;
       } else if (this.timeSelectorName === 'Break') {
-        this.timerService.setBreakMinute(this.value);
-        this.timerService.setBreakSecond(0);
+        this.settingsService.settingsState.breakMinuteSettings = this.value;
+        this.settingsService.settingsState.breakSecondSettings = 0;
+
+        this.timerService.timerState.breakMinute = this.value;
+        this.timerService.timerState.breakSecond = 0;
       }
     }
   }
