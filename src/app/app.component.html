@@ -1,5 +1,5 @@
-<h1>Pomodoro Clock</h1>
-
-<app-settings *ngIf="state === 'stop'"></app-settings>
-
-<app-timer (switchStateEvent)="switchState($event)"></app-timer>
+<div class="app-container">
+	<span class="main-title">Pomodoro Clock</span>
+	<app-timer (switchStateEvent)="switchState($event)"></app-timer>
+	<app-settings *ngIf="state === 'stop'"></app-settings>
+</div>

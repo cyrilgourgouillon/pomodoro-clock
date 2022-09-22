@@ -1,0 +1,11 @@
+.app-container {
+	height: 100vh;
+	background-color: #023047;
+	color: #fefae0;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.main-title {
+	font-size: 25pt;
+	font-weight: 500;
+}
