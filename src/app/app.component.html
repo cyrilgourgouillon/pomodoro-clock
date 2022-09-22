@@ -1,5 +1,11 @@
 <div class="app-container">
-	<span class="main-title">Pomodoro Clock</span>
-	<app-timer (switchStateEvent)="switchState($event)"></app-timer>
-	<app-settings *ngIf="state === 'stop'"></app-settings>
+	<div class="content-container">
+		<div class="title-container">
+			<span class="main-title">Pomodoro Clock</span>
+		</div>
+		<app-timer (switchStateEvent)="switchState($event)"></app-timer>
+		<div class="space"></div>
+		<app-settings *ngIf="state === 'stop'"></app-settings>
+	</div>
+	<div class="credit">Made with ❤️ by <a href="https://github.com/cyrilgourgouillon" class="link">Cyril Gourgouillon</a></div>
 </div>

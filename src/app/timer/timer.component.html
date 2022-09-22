@@ -1,18 +1,18 @@
-<div id="session-container">
-	<h2 id="timer-label">Clock</h2>
-	<div id="type-title-label">
-		<span *ngIf="type === 'break'">Break Time</span>
-		<span *ngIf="type === 'session'">Session Time</span>
+<div class="timer-container">
+	<div class="session-container">
+		<div class="time-left">
+			<span>{{minutes | timerDisplay}}</span>:<span>{{seconds | timerDisplay}}</span>
+		</div>
+		<div class="type-title-label">
+			<span *ngIf="type === 'break'">Time to chill...</span>
+			<span *ngIf="type === 'session'">Time to work !</span>
+		</div>
 	</div>
-	<div id="time-left">
-		<span>{{minutes | timerDisplay}}</span>:<span>{{seconds | timerDisplay}}</span>
-	</div>
-</div>
 
-<div id="controls-container">
-	<button id="start-btn" *ngIf="state === 'stop'" (click)="changeState('start')">Start</button>
-	<button id="stop-btn" *ngIf="state === 'start'" (click)="changeState('stop')">Pause</button>
-	<button id="skip" *ngIf="state === 'start'" (click)="skipTimer()">Skip</button>
-	<button id="reset" (click)="resetTimer()">Reset</button>
+	<div class="controls-container">
+		<button id="start-btn" *ngIf="state === 'stop'" class="large-button" (click)="changeState('start')">START</button>
+		<button id="stop-btn" *ngIf="state === 'start'" class="large-button" (click)="changeState('stop')">PAUSE</button>
+		<button id="skip" *ngIf="state === 'start'" class="large-button" (click)="skipTimer()">SKIP</button>
+		<button id="reset" (click)="resetTimer()" class="large-button">RESET</button>
+	</div>
 </div>
-  

@@ -1,0 +1,39 @@
+.timer-container {
+	background-color: #012a3fd5;
+	border-radius: 5px;
+	width: 30em;
+	height: 15em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.session-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.type-title-label {
+	font-size: 20pt;
+}
+
+.large-button {
+	width: 5em;
+	height: 3em;
+	border: none;
+	border-radius: 3px;
+	color: #023047;
+	font-weight: bolder;
+}
+
+.controls-container {
+	padding-top: 5px;
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.time-left {
+	font-size: 100pt;
+}
