@@ -1,0 +1,26 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: #012a3fd5;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.small-button {
+	width: 2em;
+	height: 2em;
+	border: none;
+	border-radius: 3px;
+	background: none;
+	color: white;
+	font-weight: bolder;
+}
+
+.small-button:hover {
+	color: rgb(255, 107, 107);
+}
+
+.small-button:focus {
+	color: rgb(102, 42, 42);
+}

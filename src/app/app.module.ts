@@ -7,6 +7,8 @@ import { TimeSelectorComponent } from './time-selector/time-selector.component';
 import { TimerComponent } from './timer/timer.component';
 import { TimerDisplayPipe } from './pipe/timer-display.pipe';
 import { SettingsComponent } from './settings/settings.component';
+import { TasksContainerComponent } from './tasks-container/tasks-container.component';
+import { TaskComponent } from './task/task.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { SettingsComponent } from './settings/settings.component';
     TimeSelectorComponent,
     TimerComponent,
     TimerDisplayPipe,
-    SettingsComponent
+    SettingsComponent,
+    TasksContainerComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

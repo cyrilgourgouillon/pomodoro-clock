@@ -4,6 +4,8 @@
 			<span class="main-title">Pomodoro Clock</span>
 		</div>
 		<app-timer></app-timer>
+    <div class="space"></div>
+    <app-tasks-container></app-tasks-container>
 		<div class="space"></div>
 		<app-settings *ngIf="this.timerState.state === 'stop'"></app-settings>
 	</div>
