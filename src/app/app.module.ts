@@ -9,6 +9,7 @@ import { TimerDisplayPipe } from './pipe/timer-display.pipe';
 import { SettingsComponent } from './settings/settings.component';
 import { TasksContainerComponent } from './tasks-container/tasks-container.component';
 import { TaskComponent } from './task/task.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TaskComponent } from './task/task.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

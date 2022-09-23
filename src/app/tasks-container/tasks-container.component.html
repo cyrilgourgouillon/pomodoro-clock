@@ -2,17 +2,16 @@
 	<div class="section-title">Tasks</div>
 
 	<div class="selector-container">
-		<app-task></app-task>
-		<app-task></app-task>
-		<app-task></app-task>
+		<app-task *ngFor="let task of this.tasks" [task]="task"></app-task>
 	</div>
 
 	<div class="space"></div>
 
-	<form>
+	<form (ngSubmit)="addTask()" #taskForm="ngForm">
 		<div class="new-task-form">
-			<input class="task-name-input" name="task-name" placeholder="new task..."/>
-			<button type="submit" class="small-button">+</button>
+			<input [(ngModel)]="model.name" class="task-name-input" name="taskName" placeholder="new task..." required/>
+			<button type="submit" class="small-button" [disabled]="taskForm.invalid">+</button>
 		</div>
 	</form>
+
 </div>

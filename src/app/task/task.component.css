@@ -24,3 +24,8 @@
 .small-button:focus {
 	color: rgb(102, 42, 42);
 }
+
+.task-name {
+	display: flex;
+	align-items: center;
+}
