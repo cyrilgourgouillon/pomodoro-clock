@@ -2,14 +2,14 @@
 	<div class="section-title">Tasks</div>
 
 	<div class="selector-container">
-		<app-task *ngFor="let task of this.tasks" [task]="task"></app-task>
+		<app-task *ngFor="let task of this.tasksState.tasks" [task]="task"></app-task>
 	</div>
 
-	<div class="space"></div>
+	<div *ngIf="this.tasksState.tasks.length !== 0" class="space"></div>
 
 	<form (ngSubmit)="addTask()" #taskForm="ngForm">
 		<div class="new-task-form">
-			<input [(ngModel)]="model.name" class="task-name-input" name="taskName" placeholder="new task..." required/>
+			<input [(ngModel)]="formName" class="task-name-input" name="taskName" placeholder="new task..." required autocomplete="off"/>
 			<button type="submit" class="small-button" [disabled]="taskForm.invalid">+</button>
 		</div>
 	</form>

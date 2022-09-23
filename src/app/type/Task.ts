@@ -1,11 +1,10 @@
-export type Status = 'standby' | 'ongoing' | 'over';
+export type Status = 'standby' | 'ongoing' | 'over' | 'next';
 
-export class Task {
-	name: string;
-	status: Status;
+export interface Task {
+	name: string,
+	status: Status
+}
 
-	constructor(name: string, status: Status) {
-		this.name = name;
-		this.status = status;
-	}
+export interface TaskState {
+	tasks: Task[]
 }

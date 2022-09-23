@@ -14,7 +14,7 @@ export class TaskComponent {
   constructor(private taskservice: TaskService) { }
 
   deleteTask() {
-
+    this.taskservice.deleteTask(this.task);
   }
 
 }

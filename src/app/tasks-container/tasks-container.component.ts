@@ -9,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksContainerComponent implements OnInit {
 
-  tasks = this.taskservice.tasks;
+  tasksState = this.taskservice.tasksState;
 
-  model: Task = {name: '', status: 'standby'};
+  formName: Task["name"];
 
   constructor(private taskservice: TaskService) { }
 
@@ -19,7 +19,8 @@ export class TasksContainerComponent implements OnInit {
   }
 
   addTask() {
-    //this.tasks.push({name: this.model.name, status: this.model.status})
+    this.taskservice.addTask({name: this.formName, status: 'standby'})
+    this.formName = '';
   }
 
 }
