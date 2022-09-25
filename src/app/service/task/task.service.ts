@@ -34,7 +34,7 @@ export class TaskService {
 
   incrementSessionUsedCounterOfCurrentTask() {
     this.tasksState.tasks.map((e) => {
-      if (e.isSelected) {
+      if (e.isSelected && e.status === 'done') {
         e.sessionsUsed++;
       }
     })

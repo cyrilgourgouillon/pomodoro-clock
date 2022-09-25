@@ -1,13 +1,14 @@
-<div class="container">
+<div class="container"
+	[class.task-done] = "this.task.status === 'done'"
+	[class.task-selected] = "this.task.isSelected">
 	<div class="left-container">
 		<button *ngIf="this.task.status === 'done'" (click)="markAsPendingButtonEvent()" class="small-button">done</button>
 		<button *ngIf="this.task.status === 'pending'" (click)="markAsDoneButtonEvent()" class="small-button">mark as done</button>
-		<div class="task-name">{{task.name}}</div>
+		<div>{{task.name}}</div>
 	</div>
 	<div class="right-container">
-		<div *ngIf="this.task.isSelected">selected</div>
 		<button *ngIf="!this.task.isSelected" (click)="this.selectCurrentTask()" class="small-button">select</button>
-		<div class="task-status">{{task.sessionsUsed}}/{{task.sessionsNeeded}}</div>
+		<div *ngIf="this.task.status === 'pending'" class="task-status">{{task.sessionsUsed}}/{{task.sessionsNeeded}}</div>
 		<button (click)="deleteTaskButtonEvent()" class="small-button">delete</button>
 	</div>
 </div>

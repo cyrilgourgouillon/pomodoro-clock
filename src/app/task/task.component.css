@@ -41,3 +41,12 @@
 	width: 100%;
 	gap: 10px;
 }
+
+.task-done {
+	color:#4b5153;
+    position: relative;  
+}
+
+.task-selected {
+	background-color: #0b415c;
+}
