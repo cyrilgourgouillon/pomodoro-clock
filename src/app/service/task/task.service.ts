@@ -7,7 +7,7 @@ import { TimerService } from '../timer/timer.service';
 })
 export class TaskService {
 
-  public tasksState: TaskState = {tasks: [{name: 'Task 1', isSelected: true, sessionsUsed: 0, sessionsNeeded: 1, status: 'pending'}, {name: 'Task 2', isSelected: false, sessionsUsed: 0, sessionsNeeded: 2, status: 'pending'}, {name: 'Task 3', isSelected: false, sessionsUsed: 0, sessionsNeeded: 4, status: 'pending'}] };
+  public tasksState: TaskState = {tasks: [{name: 'Task 1', isSelected: true, sessionsUsed: 0, sessionsNeeded: 1, status: 'pending'}] };
 
   constructor() { }
 
