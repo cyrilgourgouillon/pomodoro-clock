@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { State, TimerState, Type } from '../../type/TimerState';
 
 import { defaultTimerValues } from 'src/app/enum/defaultValue';
+import { TaskService } from '../task/task.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class TimerService {
     sessionCounter: 0,
   };
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   setState(value: State): void {
     this.timerState.state = value;
@@ -42,5 +43,6 @@ export class TimerService {
 
   incrementSessionCounter() {
     this.timerState.sessionCounter++;
+    this.taskService.incrementSessionUsedCounterOfCurrentTask();
   }
 }

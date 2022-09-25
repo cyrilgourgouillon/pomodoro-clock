@@ -9,7 +9,7 @@ export class TaskService {
 
   public tasksState: TaskState = {tasks: [{name: 'Task 1', isSelected: true, sessionsUsed: 0, sessionsNeeded: 1, status: 'pending'}, {name: 'Task 2', isSelected: false, sessionsUsed: 0, sessionsNeeded: 2, status: 'pending'}, {name: 'Task 3', isSelected: false, sessionsUsed: 0, sessionsNeeded: 4, status: 'pending'}] };
 
-  constructor(private timerService: TimerService) { }
+  constructor() { }
 
   addTask(task: Task) {
     this.tasksState.tasks.push(task)
@@ -29,6 +29,15 @@ export class TaskService {
   }
 
   deleteTask(task: Task) {
-    this.tasksState.tasks.splice(this.tasksState.tasks.indexOf(task), 1)
+    this.tasksState.tasks.splice(this.tasksState.tasks.indexOf(task), 1);
   }
+
+  incrementSessionUsedCounterOfCurrentTask() {
+    this.tasksState.tasks.map((e) => {
+      if (e.isSelected) {
+        e.sessionsUsed++;
+      }
+    })
+  }
+
 }

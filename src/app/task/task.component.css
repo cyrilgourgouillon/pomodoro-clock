@@ -7,11 +7,6 @@
 	padding: 10px;
 }
 
-.container:hover {
-	background-color: #012335;
-	cursor: pointer;
-}
-
 .small-button {
 	height: 2em;
 	border: none;
