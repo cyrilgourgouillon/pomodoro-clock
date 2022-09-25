@@ -1,8 +1,9 @@
-export type Status = 'standby' | 'ongoing' | 'over' | 'next';
-
 export interface Task {
 	name: string,
-	status: Status
+	isSelected: boolean,
+	sessionsUsed: number,
+	sessionsNeeded: number,
+	status: 'pending' | 'done'
 }
 
 export interface TaskState {

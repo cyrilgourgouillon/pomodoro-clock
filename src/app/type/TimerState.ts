@@ -9,4 +9,5 @@ export interface TimerState {
     breakSecond : number,
     state : State,
     type : Type
+    sessionCounter: number
 }

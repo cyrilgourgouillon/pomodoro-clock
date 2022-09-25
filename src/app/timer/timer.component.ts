@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../service/settings/settings.service';
+import { TaskService } from '../service/task/task.service';
 
 import { TimerService } from '../service/timer/timer.service';
-import { State, TimerState, Type } from '../type/TimerState';
+import { TaskState } from '../type/Task';
+import { State, TimerState } from '../type/TimerState';
 
 @Component({
   selector: 'app-timer',
@@ -12,12 +14,14 @@ import { State, TimerState, Type } from '../type/TimerState';
 export class TimerComponent implements OnInit {
 
   timerState : TimerState;
+  taskState : TaskState;
   interval: any;
 
-  constructor(private timerService: TimerService, private settingsService: SettingsService) { }
+  constructor(private timerService: TimerService, private settingsService: SettingsService, private taskService: TaskService) { }
 
   ngOnInit(): void {
     this.timerState = this.timerService.timerState;
+    this.taskState = this.taskService.tasksState;
   }
 
   changeState(value: State): void {
@@ -27,11 +31,7 @@ export class TimerComponent implements OnInit {
     else if (this.timerState.state === 'stop') {
       this.setTimerOn();
     }
-    this.setState(value);
-  }
-
-  setState(value: State): void {
-    this.timerService.timerState.state = value;
+    this.timerService.setState(value);
   }
 
   setTimerOn(): void {
@@ -49,6 +49,7 @@ export class TimerComponent implements OnInit {
         if (this.isSessionTimerOver()) {
           this.setBreakTimer();
           this.resetSessionTimer();
+          this.timerService.incrementSessionCounter();
         }
       }
     }, 1000); 
@@ -85,11 +86,11 @@ export class TimerComponent implements OnInit {
   }
 
   setSessionTimer(): void {
-    this.setTimerType('session');
+    this.timerService.setTimerType('session');
   }
 
   setBreakTimer(): void {
-    this.setTimerType('break');
+    this.timerService.setTimerType('break');
   }
 
   resetSessionTimer(): void {
@@ -100,10 +101,6 @@ export class TimerComponent implements OnInit {
     this.timerService.setBreakTimerValues(this.settingsService.settingsState.breakMinuteSettings, this.settingsService.settingsState.breakSecondSettings);
   }
 
-  setTimerType(value: Type): void {
-    this.timerState.type = value;
-  }
-
   skipTimer(): void {
     if (this.timerState.type === 'break') {
       this.setSessionTimer();
@@ -111,16 +108,16 @@ export class TimerComponent implements OnInit {
     } else if (this.timerState.type === 'session') {
       this.setBreakTimer();
       this.resetSessionTimer();
+      this.timerService.incrementSessionCounter();
     }
   }
 
   resetTimer(): void {
     this.setTimerOff();
-    this.setState('stop');
-    this.setTimerType('session');
+    this.timerService.setState('stop');
+    this.timerService.setTimerType('session');
     this.resetBreakTimer();
     this.resetSessionTimer();
     this.setSessionTimer();
   }
-
 }

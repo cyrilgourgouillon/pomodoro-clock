@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TimerState } from '../../type/TimerState';
+import { State, TimerState, Type } from '../../type/TimerState';
 
 import { defaultTimerValues } from 'src/app/enum/defaultValue';
 
@@ -15,10 +15,20 @@ export class TimerService {
     breakSecond : defaultTimerValues.DEFAULT_BREAK_SECONDS,
 
     state : 'stop',
-    type : 'session'
+    type : 'session',
+
+    sessionCounter: 0,
   };
 
   constructor() { }
+
+  setState(value: State): void {
+    this.timerState.state = value;
+  }
+
+  setTimerType(value: Type): void {
+    this.timerState.type = value;
+  }
 
   setBreakTimerValues(minute: TimerState["breakMinute"], second: TimerState["breakSecond"]): void {
     this.timerState.breakMinute = minute;
@@ -28,5 +38,9 @@ export class TimerService {
   setSessionTimerValues(minute: TimerState["sessionMinute"], second: TimerState["sessionSecond"]): void {
     this.timerState.sessionMinute = minute;
     this.timerState.sessionSecond = second;
+  }
+
+  incrementSessionCounter() {
+    this.timerState.sessionCounter++;
   }
 }

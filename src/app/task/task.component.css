@@ -2,13 +2,17 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	background-color: #012a3fd5;
+	background-color: #012a3f;
 	border-radius: 5px;
 	padding: 10px;
 }
 
+.container:hover {
+	background-color: #012335;
+	cursor: pointer;
+}
+
 .small-button {
-	width: 2em;
 	height: 2em;
 	border: none;
 	border-radius: 3px;
@@ -25,7 +29,20 @@
 	color: rgb(102, 42, 42);
 }
 
-.task-name {
-	display: flex;
+.left-container {
 	align-items: center;
+	justify-content: flex-start;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	gap: 10px;
+}
+
+.right-container {
+	align-items: center;
+	justify-content: flex-end;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	gap: 10px;
 }

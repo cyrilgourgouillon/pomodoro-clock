@@ -1,5 +1,12 @@
 <div class="container">
-	<div class="task-name">{{task.name}}</div>
-	<div class="task-name">{{task.status}}</div>
-	<button (click)="deleteTask()" class="small-button">-</button>
+	<div class="left-container">
+		<button *ngIf="this.task.status === 'done'" (click)="markAsPendingButtonEvent()" class="small-button">done</button>
+		<button *ngIf="this.task.status === 'pending'" (click)="markAsDoneButtonEvent()" class="small-button">mark as done</button>
+		<div class="task-name">{{task.name}}</div>
+	</div>
+	<div class="right-container">
+		<button (click)="this.selectCurrentTask()" class="small-button">{{ this.task.isSelected ? 'selected' : 'select'}}</button>
+		<div class="task-status">{{task.sessionsUsed}}/{{task.sessionsNeeded}}</div>
+		<button (click)="deleteTaskButtonEvent()" class="small-button">delete</button>
+	</div>
 </div>
