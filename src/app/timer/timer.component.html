@@ -13,9 +13,9 @@
 	</div>
 
 	<div class="controls-container">
-		<button id="start-btn" *ngIf="this.timerState.state === 'stop'" class="large-button" (click)="changeState('start')"><fa-icon [icon]="faPlay"></fa-icon></button>
-		<button id="stop-btn" *ngIf="this.timerState.state === 'start'" class="large-button" (click)="changeState('stop')"><fa-icon [icon]="faPause"></fa-icon></button>
-		<button id="skip" *ngIf="this.timerState.state === 'start'" class="large-button" (click)="skipTimer()"><fa-icon [icon]="faForwardStep"></fa-icon></button>
-		<button id="reset" (click)="resetTimer()" class="large-button"><fa-icon [icon]="faRotateRight"></fa-icon></button>
+		<app-large-button *ngIf="this.timerState.state === 'stop'" (click)="changeState('start')"><fa-icon [icon]="faPlay"></fa-icon></app-large-button>
+		<app-large-button *ngIf="this.timerState.state === 'start'" (click)="changeState('stop')"><fa-icon [icon]="faPause"></fa-icon></app-large-button>
+		<app-large-button *ngIf="this.timerState.state === 'start'" (click)="skipTimer()"><fa-icon [icon]="faForwardStep"></fa-icon></app-large-button>
+		<app-large-button *ngIf="this.timerState.state === 'stop'" (click)="resetTimer()"><fa-icon [icon]="faRotateRight"></fa-icon></app-large-button>
 	</div>
 </div>

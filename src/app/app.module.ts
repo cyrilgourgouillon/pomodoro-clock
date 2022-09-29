@@ -11,6 +11,8 @@ import { TasksContainerComponent } from './tasks-container/tasks-container.compo
 import { TaskComponent } from './task/task.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SmallButtonComponent } from './tools/small-button/small-button.component';
+import { LargeButtonComponent } from './tools/large-button/large-button.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TimerDisplayPipe,
     SettingsComponent,
     TasksContainerComponent,
-    TaskComponent
+    TaskComponent,
+    SmallButtonComponent,
+    LargeButtonComponent
   ],
   imports: [
     BrowserModule,

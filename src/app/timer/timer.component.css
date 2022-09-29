@@ -18,15 +18,6 @@
 	font-size: 20pt;
 }
 
-.large-button {
-	width: 5em;
-	height: 3em;
-	border: none;
-	border-radius: 3px;
-	color: #023047;
-	font-weight: bolder;
-}
-
 .controls-container {
 	padding-top: 5px;
 	display: flex;
