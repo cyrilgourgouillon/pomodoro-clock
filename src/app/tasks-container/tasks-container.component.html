@@ -12,7 +12,7 @@
 			<input [(ngModel)]="formName" type="text" class="task-name-input" name="taskName" placeholder="new task..." required autocomplete="off"/>
 			<label for="sessionNeeded">Sessions needed : </label>
 			<input [(ngModel)]="formSessionNeeded" type="number" class="task-session-input" name="sessionNeeded" min="1" required/>
-			<button type="submit" class="small-button" [disabled]="taskForm.invalid">+</button>
+			<app-small-button type="submit" [disabled]="taskForm.invalid">+</app-small-button>
 		</div>
 	</form>
 

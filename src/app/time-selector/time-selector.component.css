@@ -8,13 +8,3 @@
 .length-label {
 	font-size: 13pt;
 }
-
-.small-button {
-	width: 2em;
-	height: 2em;
-	border: none;
-	border-radius: 3px;
-	background: none;
-	color: white;
-	font-weight: bolder;
-}

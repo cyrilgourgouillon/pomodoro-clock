@@ -7,23 +7,6 @@
 	padding: 10px;
 }
 
-.small-button {
-	height: 2em;
-	border: none;
-	border-radius: 3px;
-	background: none;
-	color: white;
-	font-weight: bolder;
-}
-
-.small-button:hover {
-	color: rgb(255, 107, 107);
-}
-
-.small-button:focus {
-	color: rgb(102, 42, 42);
-}
-
 .left-container {
 	align-items: center;
 	justify-content: flex-start;

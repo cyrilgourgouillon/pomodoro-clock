@@ -36,15 +36,15 @@
 	color: rgb(242, 255, 64);
 	text-decoration: none;
 }
-  
+
 .link:visited {
 	text-decoration: none;
 }
-  
+
 .link:hover {
 	text-decoration: underline;
 }
-  
+
 .link:active {
 	text-decoration: underline;
 }

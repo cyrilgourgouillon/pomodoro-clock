@@ -16,6 +16,10 @@ import { Component, OnInit } from '@angular/core';
       color: #023047;
       font-weight: bolder;
     }
+
+    .large-button:hover {
+      color: #c7c7c7;
+    }
   `]
 })
 export class LargeButtonComponent implements OnInit {

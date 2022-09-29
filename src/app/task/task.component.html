@@ -7,8 +7,8 @@
 	<div>{{task.name}}</div>
 	</div>
 	<div class="right-container">
-		<button *ngIf="!this.task.isSelected" (click)="this.selectCurrentTask()" class="small-button">select</button>
+		<app-small-button *ngIf="!this.task.isSelected" (click)="this.selectCurrentTask()">select</app-small-button>
 		<div class="task-status">{{task.sessionsUsed}}/{{task.sessionsNeeded}}</div>
-		<button (click)="deleteTaskButtonEvent()" class="small-button"><fa-icon [icon]="faTrash"></fa-icon></button>
+		<app-small-button (click)="this.deleteTaskButtonEvent()"><fa-icon [icon]="faTrash"></fa-icon></app-small-button>
 	</div>
 </div>
