@@ -13,9 +13,9 @@
 	</div>
 
 	<div class="controls-container">
-		<button id="start-btn" *ngIf="this.timerState.state === 'stop'" class="large-button" (click)="changeState('start')">START</button>
-		<button id="stop-btn" *ngIf="this.timerState.state === 'start'" class="large-button" (click)="changeState('stop')">PAUSE</button>
-		<button id="skip" *ngIf="this.timerState.state === 'start'" class="large-button" (click)="skipTimer()">SKIP</button>
-		<button id="reset" (click)="resetTimer()" class="large-button">RESET</button>
+		<button id="start-btn" *ngIf="this.timerState.state === 'stop'" class="large-button" (click)="changeState('start')"><fa-icon [icon]="faPlay"></fa-icon></button>
+		<button id="stop-btn" *ngIf="this.timerState.state === 'start'" class="large-button" (click)="changeState('stop')"><fa-icon [icon]="faPause"></fa-icon></button>
+		<button id="skip" *ngIf="this.timerState.state === 'start'" class="large-button" (click)="skipTimer()"><fa-icon [icon]="faForwardStep"></fa-icon></button>
+		<button id="reset" (click)="resetTimer()" class="large-button"><fa-icon [icon]="faRotateRight"></fa-icon></button>
 	</div>
 </div>

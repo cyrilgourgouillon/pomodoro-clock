@@ -6,6 +6,8 @@ import { TimerService } from '../service/timer/timer.service';
 import { TaskState } from '../type/Task';
 import { State, TimerState } from '../type/TimerState';
 
+import { faForwardStep, faPause, faPlay, faRotateRight, faTrash } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
@@ -16,6 +18,11 @@ export class TimerComponent implements OnInit {
   timerState : TimerState;
   taskState : TaskState;
   interval: any;
+
+  faRotateRight = faRotateRight;
+  faPlay = faPlay;
+  faForwardStep = faForwardStep;
+  faPause = faPause;
 
   constructor(private timerService: TimerService, private settingsService: SettingsService, private taskService: TaskService) { }
 

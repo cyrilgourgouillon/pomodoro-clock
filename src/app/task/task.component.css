@@ -43,10 +43,12 @@
 }
 
 .task-done {
-	color:#4b5153;
-    position: relative;  
+	color:#a7a7a7;
+  position: relative;
+	text-decoration: line-through;
 }
 
 .task-selected {
 	background-color: #0b415c;
+	border-left: 3px solid #fefae0;
 }
