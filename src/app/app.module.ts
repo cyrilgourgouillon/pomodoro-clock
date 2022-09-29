@@ -10,6 +10,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { TasksContainerComponent } from './tasks-container/tasks-container.component';
 import { TaskComponent } from './task/task.component';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
